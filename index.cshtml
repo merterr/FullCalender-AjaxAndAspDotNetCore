@@ -1,0 +1,25 @@
+@model AppName.VM.FrontNewsEventAnnVM
+@{ Layout = "~/Views/Shared/_FrontLayout.cshtml";}
+
+<div id="calendar">
+</div>
+
+@section DateScripts{
+
+    <script type="text/javascript" >
+        var newUrl = window.location.origin + "/@unitCode/view/GetAllAnnouncements";
+        $(function () {
+
+            $.ajax({
+                url: "/@unitCode/view/GetAnnouncementCalender",
+                type: "POST",
+                //contentType: "application/json; charset=utf-8", // data gonderirken
+                dataType: "json", // data alırken
+                async: false,
+                success: function (data) {
+                    calenderData = data;
+                }
+            })
+        });
+    </script>
+}
